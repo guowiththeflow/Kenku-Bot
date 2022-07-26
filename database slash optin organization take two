@@ -1,0 +1,35 @@
+def addMessage(user, message):
+    userContent = pickle.loads(db[user])
+    userContent["allMessages"].append(message)
+    db[user] = pickle.dumps(userContent)
+    
+    print("message logged")
+    print(userContent)
+
+# add user to db.keys()
+def userOptIn(user):
+  userContent = {
+      "username": user,
+      "allMessages": [],
+      #"isOptedIn": True
+    }
+  db[user] = userContent
+  print(db[user])
+
+# sets user's isOptedIn flag to false
+def userOptOut(user):
+  del db[user]
+  #userContent["isOptedIn"] = False
+  #db[user] = pickle.dumps(userContent)
+  print("opted out")
+
+# deletes users whose isOptedIn flags are set to false
+#def housekeeping():
+  #del
+  #for i in db.keys():
+    #userContent = pickle.loads(db["whatever the key is"])
+    #if userContent.isOptedIn == False:
+      #del db["whatever the key is"]
+  #pass
+  # cycles through all users, checks for users that have isOptedIn set to False
+  # deletes key from db.keys()

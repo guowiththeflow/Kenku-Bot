@@ -1,0 +1,24 @@
+def addMessage(message):
+  if "savedMessages" in db.keys():
+    savedMessages = db["savedMessages"] # sets the contents of the savedMessages list to the contents of the "savedMessages" database
+    savedMessages.append(message) # adds new message to the savedMessages list
+    db["savedMessages"] = savedMessages # resaves "savedMessages" database as the newly updated list
+  else: # if "savedMessages" database doesn't exist yet
+    db["savedMessages"] = [message]
+
+def userOptIn(user):
+  if "optedInUsers" in db.keys():
+    optedInUsers = db["optedInUsers"]
+    optedInUsers.append(user)
+  else:
+    db["optedInUsers"] = [user]
+
+def userOptOut(i):
+  optedInUsers = db["optedInUsers"]
+  if len(optedInUsers) > i: #checks to make sure the provided index doesn't exceed the length of the database
+    del optedInUsers[i] # deletes message at the given index; note - will have to delete all messages belonging to a specific user
+  db["optedInUsers"] = optedInUsers 
+
+def getUsers(user):
+  userIsOptedIn = db.get(user)
+  return userIsOptedIn # returns nothing if user is not opted in

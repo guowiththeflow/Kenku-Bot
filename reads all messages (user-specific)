@@ -1,0 +1,28 @@
+@client.event
+async def on_message(message): # triggers every time a message is received. on_message("") is the name we assign to refer to the message that gets received
+  if message.author == client.user: # if the bot itself sent the message, ignore the trigger
+    return
+
+  if message.content.startswith("<(help") or message.content.startswith("<( help"): # sets the command phrase
+    await message.channel.send("Hi, I'm Kenku Bot! :wave: Want to hear me do an impression? I only know how to imitate words and phrases I've heard others say, so sometimes I'll spit out nonsense, but the more you talk the better I'll get!\n \n> **<(optin [yourname]:** Tells me to start listening to your messages\n> **<(optout [yourname]:** Tells me to stop listening to your messages & clears my memory\n> **<(mimic [yourname]:** Sends a message made of the things I've heard you say") # sends message back into the channel
+  
+  elif message.content.startswith("<(optin") or message.content.startswith("<( optin"):
+    # if there's no name, prompt the user to try the command again with name
+    # read the name that came afterwards
+    # if the user has already registered a name, say so + say the name
+    else: # otherwise add the name to the base of names and start collecting messages
+
+  
+  elif message.content.startswith("<(optout") or message.content.startswith("<( optout"):
+    # if there's no name, prompt the user to try the command again with name
+    # read the name
+    # if the user hasn't registered a name, say so
+    # otherwise remove the name and all its associated messages
+  
+  elif message.content.startswith("<(mimic") or message.content.startswith("<( mimic"):
+    # if no name, prompt the user to try the command again with name
+    # if name is not registered, say so + encourage user to get their friend to opt in to use this feature
+    else:
+      await message.channel.send(imitation) # "username says: " + imitation 
+  
+  elif  # if the user is registered, add the message to the user's file
