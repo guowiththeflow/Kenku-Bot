@@ -71,7 +71,7 @@ def serverAddMessage(message):
   if len(words)!= 0 :
     for i in range(2, len(words)):
       serverCoupleWords[(words[i - 2], words[i - 1])].put(words[i])
-     serverCoupleWords[(words[-2], words[-1])].put("")
+      serverCoupleWords[(words[-2], words[-1])].put("")
 
 def serverGenerate():
   result = []
